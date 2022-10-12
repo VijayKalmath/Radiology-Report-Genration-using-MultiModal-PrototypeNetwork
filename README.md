@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # XProNet
 
 This is the official implementation of [Cross-modal Prototype Driven Network for Radiology Report Generation](https://arxiv.org/abs/2207.04818) accepted to ECCV2022.
@@ -81,3 +82,27 @@ Visual extractor labels: {'BLEU_1': 0.3439767902051841, 'BLEU_2': 0.214721829856
 ## Acknowledgment
 Our project references the codes in the following repos. Thanks for thier works and sharing.
 - [R2GenCMN](https://github.com/cuhksz-nlp/R2GenCMN)
+=======
+### Radiology-Report-Genration-using-MultiModal-PrototypeNetwork
+
+Radiology report generation (RRG) aims to describe automatically a radiology image with human-like language and could potentially support the work of radiologists, reducing the burden of manual reporting.
+
+In this project , we analyze the Radiology Report Datasets namely IU-Xray and MIMIC-CXR and build models to improve current State of the Art.
+
+
+#### Authors : 
+
++ Vijay S Kalmath (vsk2123) (Team Captain) 
++ Andrew Christopher Schaefer (as6425) 
++ Ayush Sinha (as6430)
++ Amrutha Varshini Sundar (as6431)
++ Prabha-Kiranmai Vasireddy (pv2342)
++ Navjot Singh (ns3577)
+
+#### Mentor : 
++ Dr. Hemant Palivela from Accenture 
++ Professor Sining Chen
+
+#### CA : 
++ Aayush Kumar Verma (av2955)
+>>>>>>> 55159da0e3037e8e8d0b5398ddb0a7603164e9b3
