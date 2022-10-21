@@ -10,6 +10,7 @@ from modules.metrics import compute_scores
 from modules.optimizers import build_optimizer, build_lr_scheduler
 from modules.tokenizers import Tokenizer
 from modules.trainer import Trainer
+import wandb
 
 torch.autograd.set_detect_anomaly(True)
 def parse_agrs():
@@ -123,7 +124,7 @@ def parse_agrs():
 def main():
     # parse arguments
     args = parse_agrs()
-
+    wandb.init(project="Training-XPronet", entity="capstone-dsi-radiology-report-generation")
     # fix random seeds
     torch.manual_seed(args.seed)
     torch.backends.cudnn.deterministic = True
@@ -143,7 +144,7 @@ def main():
 
     # build model architecture
     model = XProNet(args, tokenizer)
-
+    wandb.watch(model,log="all")
     # get function handles of loss and metrics
     criterion = compute_loss
     metrics = compute_scores
