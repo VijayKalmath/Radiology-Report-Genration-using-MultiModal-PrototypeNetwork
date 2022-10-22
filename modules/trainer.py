@@ -5,7 +5,7 @@ from abc import abstractmethod
 import torch
 from numpy import inf
 from .utils import con_loss as contrastive_loss
-
+import wandb
 
 
 class BaseTrainer(object):
@@ -19,7 +19,7 @@ class BaseTrainer(object):
         # setup GPU device if available, move model into configured device
         self.device, device_ids = self._prepare_device(args.n_gpu)
 
-  
+
         self.model = model.to(self.device)
         if len(device_ids) > 1:
             self.model = torch.nn.DataParallel(model, device_ids=device_ids)
@@ -187,7 +187,7 @@ class Trainer(BaseTrainer):
     def _train_epoch(self, epoch):
 
         self.logger.info('[{}/{}] Start to train in the training set.'.format(epoch, self.epochs))
-        wandb_dictionary = {} 
+        wandb_dictionary = {}
         ce_loss = 0
         img_con_loss = 0
         txt_con_loss = 0
@@ -232,7 +232,7 @@ class Trainer(BaseTrainer):
         log = {'ce_loss': ce_loss / len(self.train_dataloader), 'img_con': img_con_loss / len(self.train_dataloader),
                'txt_con': txt_con_loss / len(self.train_dataloader),
                'img_bce_loss': img_bce_loss / len(self.train_dataloader), 'txt_bce_loss': txt_bce_loss / len(self.train_dataloader)}
-        
+
         self.logger.info('[{}/{}] Start to evaluate in the validation set.'.format(epoch, self.epochs))
         self.model.eval()
         with torch.no_grad():
@@ -260,7 +260,7 @@ class Trainer(BaseTrainer):
         self.model.eval()
         with torch.no_grad():
             test_gts, test_res = [], []
-            example_images = [] 
+            example_images = []
             for batch_idx, (images_id, images, reports_ids, reports_masks, labels) in enumerate(self.test_dataloader):
                 images, reports_ids, reports_masks, labels = images.to(self.device), reports_ids.to(
                     self.device), reports_masks.to(self.device), labels.to(self.device)
@@ -273,19 +273,19 @@ class Trainer(BaseTrainer):
                     ground_truths = self.model.tokenizer.decode_batch(reports_ids[:, 1:].cpu().numpy())
                 test_res.extend(reports)
                 test_gts.extend(ground_truths)
-                if not example_images : 
+                if not example_images :
                     example_images.extend(images[0:5,0].permute(0,2,3,1))
             test_met = self.metric_ftns({i: [gt] for i, gt in enumerate(test_gts)},
                                         {i: [re] for i, re in enumerate(test_res)})
             log.update(**{'test_' + k: v for k, v in test_met.items()})
 
         self.lr_scheduler.step()
-        
+
         columns = ["Image","Ground Truth Report", "Generated Report"]
         table = wandb.Table(columns=columns)
 
-        for i in range(5): 
-            img = wandb.Image(example_images[i])
+        for i in range(5):
+            img = wandb.Image(example_images[i].cpu().detach().numpy())
             table.add_data(img, test_gts[i], test_res[i])
 
 
