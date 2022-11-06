@@ -144,7 +144,6 @@ def main():
 
     # build model architecture
     model = XProNet(args, tokenizer)
-    wandb.watch(model,log="all")
     # get function handles of loss and metrics
     criterion = compute_loss
     metrics = compute_scores

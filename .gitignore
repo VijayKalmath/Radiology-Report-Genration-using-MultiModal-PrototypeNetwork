@@ -1,21 +1,27 @@
-./modules/__pycache__
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+**/__pycache__
+**/.ipynb_checkpoints
+
+### Data ###
 data/*
 data
 results/*
-.ipynb_checkpoints
+data.7z
+
+### logs ###
 .idea
 logs/*
-./run_mimic_cxr.sh
-modules/__pycache__
-.idea
-.ipynb_checkpoints
-*.pth
-*.ipynb
-gen_init_protype*
-visualize.py
-visualize_iu_xray.sh
-visualize_mimic_cxr.sh
-mimic_predict_sample_abnormal.json
-RRGPro.tar.gz
-iu_xray_keywords.txt
-NLMCXR_png.tgz
+wandb/
+
+### Visual Studio ### 
+*.code-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace

@@ -12,7 +12,10 @@ class VisualExtractor(nn.Module):
 
         modules = list(model.children())[:-2]
         self.model = nn.Sequential(*modules)
-        
+
+        # For Efficient_Net model, adding new conv2D layer
+        self.model == nn.Sequential(self.model,nn.Conv2d(1280,2048,3,padding="same"))
+
         self.avg_fnt = torch.nn.AvgPool2d(kernel_size=7, stride=1, padding=0)
 
     def forward(self, images):
