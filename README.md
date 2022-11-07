@@ -5,6 +5,11 @@ Radiology report generation (RRG) aims to describe automatically a radiology ima
 In this project , we analyze the Radiology Report Datasets namely IU-Xray and MIMIC-CXR and build models to improve current State of the Art.
 
 
+
+
+#### Our project references the codes in the following repos. Thanks for thier works and sharing.
++ Markin-Wang/XProNet
+
 #### Authors : 
 
 + Vijay S Kalmath (vsk2123) (Team Captain) 
