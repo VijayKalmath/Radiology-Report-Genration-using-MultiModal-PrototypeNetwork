@@ -7,7 +7,7 @@ from pseudolabelgen_datasets import IuxrayMultiImageDataset, MimiccxrSingleImage
 
 
 class PseudoLabelDataLoader(DataLoader):
-    def __init__(self, args, split, shuffle,drop_last=False):
+    def __init__(self, args, split, shuffle, drop_last=False):
         self.args = args
         self.dataset_name = args.dataset_name
         self.batch_size = args.batch_size
@@ -15,33 +15,41 @@ class PseudoLabelDataLoader(DataLoader):
         self.num_workers = args.num_workers
         self.split = split
 
-        if split == 'train':
-            self.transform = transforms.Compose([
-                transforms.Resize(256),
-                transforms.RandomCrop(224),
-                #transforms.RandomHorizontalFlip(),
-                transforms.ToTensor(),
-                transforms.Normalize((0.485, 0.456, 0.406),
-                                     (0.229, 0.224, 0.225))])
+        if split == "train":
+            self.transform = transforms.Compose(
+                [
+                    transforms.Resize(256),
+                    transforms.RandomCrop(224),
+                    # transforms.RandomHorizontalFlip(),
+                    transforms.ToTensor(),
+                    transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
+                ]
+            )
         else:
-            self.transform = transforms.Compose([
-                transforms.Resize((224, 224)),
-                transforms.ToTensor(),
-                transforms.Normalize((0.485, 0.456, 0.406),
-                                     (0.229, 0.224, 0.225))])
+            self.transform = transforms.Compose(
+                [
+                    transforms.Resize((224, 224)),
+                    transforms.ToTensor(),
+                    transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
+                ]
+            )
 
-        if self.dataset_name == 'iu_xray':
-            self.dataset = IuxrayMultiImageDataset(self.args, self.split, transform=self.transform)
+        if self.dataset_name == "iu_xray":
+            self.dataset = IuxrayMultiImageDataset(
+                self.args, self.split, transform=self.transform
+            )
         else:
-            self.dataset = MimiccxrSingleImageDataset(self.args, self.split, transform=self.transform)
+            self.dataset = MimiccxrSingleImageDataset(
+                self.args, self.split, transform=self.transform
+            )
 
         self.init_kwargs = {
-            'dataset': self.dataset,
-            'batch_size': self.batch_size,
-            'shuffle': self.shuffle,
-            'collate_fn': self.collate_fn,
-            'num_workers': self.num_workers,
-            'drop_last':drop_last
+            "dataset": self.dataset,
+            "batch_size": self.batch_size,
+            "shuffle": self.shuffle,
+            "collate_fn": self.collate_fn,
+            "num_workers": self.num_workers,
+            "drop_last": drop_last,
         }
         super().__init__(**self.init_kwargs)
 

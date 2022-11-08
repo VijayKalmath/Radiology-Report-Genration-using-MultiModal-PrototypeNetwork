@@ -4,7 +4,6 @@ from abc import abstractmethod
 
 import torch
 from numpy import inf
-from .utils import con_loss as contrastive_loss
 import wandb
 
 
