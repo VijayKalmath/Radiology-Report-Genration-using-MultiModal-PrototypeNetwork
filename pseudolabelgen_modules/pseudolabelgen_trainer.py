@@ -63,7 +63,7 @@ class BaseTrainer(object):
             log = {"epoch": epoch}
             log.update(result)
 
-            self._record_best(log)
+            improved_val = self._record_best(log)
 
             # print logged informations to the screen
             for key, value in log.items():
@@ -72,30 +72,8 @@ class BaseTrainer(object):
             # evaluate model performance according to configured metric, save best checkpoint as model_best
             best = False
             if self.mnt_mode != "off":
-                try:
-                    # check whether model performance improved or not, according to specified metric(mnt_metric)
-                    cur_metric = (
-                        log["val_BLEU_4"]
-                        + 0.33 * log["val_BLEU_1"]
-                        + 0.67 * log["val_METEOR"]
-                    )
-                    improved = (
-                        self.mnt_mode == "min" and log[self.mnt_metric] <= self.mnt_best
-                    ) or (self.mnt_mode == "max" and cur_metric >= self.mnt_best)
-                    # (self.mnt_mode == 'max' and (log[self.mnt_metric]) >= self.mnt_best)
-                except KeyError:
-                    self.logger.warning(
-                        "Warning: Metric '{}' is not found. "
-                        "Model performance monitoring is disabled.".format(
-                            self.mnt_metric
-                        )
-                    )
-                    self.mnt_mode = "off"
-                    improved = False
-
-                if improved:
-                    self.mnt_best = cur_metric
-                    # self.mnt_best = log[self.mnt_metric]
+                if improved_val:
+                    self.mnt_best = log[self.mnt_metric]
                     not_improved_count = 0
                     best = True
                     best_epoch = epoch
@@ -134,6 +112,8 @@ class BaseTrainer(object):
         )
         if improved_test:
             self.best_recorder["test"].update(log)
+        
+        return improved_val
 
     def _prepare_device(self, n_gpu_use):
         n_gpu = torch.cuda.device_count()
@@ -199,7 +179,7 @@ class Trainer(BaseTrainer):
                 labels.to(self.device),
             )
 
-            output = self.model(images, labels=labels, mode="train")
+            output = self.model(images, mode="train")
 
             # TODO Define loss
             loss = 0

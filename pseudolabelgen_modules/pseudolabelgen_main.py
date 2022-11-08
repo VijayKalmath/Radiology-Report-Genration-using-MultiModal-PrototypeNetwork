@@ -18,19 +18,19 @@ def parse_agrs():
     parser.add_argument(
         "--image_dir",
         type=str,
-        default="data/iu_xray/images/",
+        default="../data/iu_xray/images/",
         help="the path to the directory containing the data.",
     )
     parser.add_argument(
         "--ann_path",
         type=str,
-        default="data/iu_xray/annotation.json",
+        default="../data/iu_xray/annotation.json",
         help="the path to the directory containing the data.",
     )
     parser.add_argument(
         "--label_path",
         type=str,
-        default="data/iu_xray/labels.pickle",
+        default="../data/iu_xray/labels/labels_14.pickle",
         help="the path to the directory containing the data.",
     )
 
@@ -41,15 +41,6 @@ def parse_agrs():
         default="iu_xray",
         choices=["iu_xray", "mimic_cxr"],
         help="the dataset to be used.",
-    )
-    parser.add_argument(
-        "--max_seq_length",
-        type=int,
-        default=60,
-        help="the maximum sequence length of the reports.",
-    )
-    parser.add_argument(
-        "--threshold", type=int, default=3, help="the cut off frequency for the words."
     )
     parser.add_argument(
         "--num_workers",
@@ -71,13 +62,13 @@ def parse_agrs():
     parser.add_argument(
         "--save_dir",
         type=str,
-        default="results/iu_xray",
+        default="psuedolabelgen_results/iu_xray",
         help="the patch to save the models.",
     )
     parser.add_argument(
         "--record_dir",
         type=str,
-        default="records/",
+        default="psuedolabelgen_records/",
         help="the patch to save the results of experiments.",
     )
     parser.add_argument(
@@ -99,12 +90,13 @@ def parse_agrs():
     parser.add_argument(
         "--monitor_metric",
         type=str,
-        default="BLEU_4",
+        default="f1score",
         help="the metric to be monitored.",
     )
     parser.add_argument(
         "--early_stop", type=int, default=50, help="the patience of training."
     )
+    parser.add_argument("--seed", type=int, default=42, help=".")
 
     args = parser.parse_args()
     return args
@@ -113,10 +105,11 @@ def parse_agrs():
 def main():
     # parse arguments
     args = parse_agrs()
-    wandb.init(
-        project="Training-Image-Extractor",
-        entity="capstone-dsi-radiology-report-generation",
-    )
+    # wandb.init(
+    #     project="Training-Image-Extractor",
+    #     entity="capstone-dsi-radiology-report-generation",
+    # )
+
     # fix random seeds
     torch.manual_seed(args.seed)
     torch.backends.cudnn.deterministic = True
@@ -137,6 +130,7 @@ def main():
     model = PseudoLabelGen(args)
     # build trainer and start to train
     trainer = Trainer(model, args, train_dataloader, val_dataloader, test_dataloader)
+    return model
     trainer.train()
 
 
