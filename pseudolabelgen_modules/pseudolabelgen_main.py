@@ -62,13 +62,13 @@ def parse_agrs():
     parser.add_argument(
         "--save_dir",
         type=str,
-        default="psuedolabelgen_results/iu_xray",
+        default="pseudolabelgen_results/iu_xray",
         help="the patch to save the models.",
     )
     parser.add_argument(
         "--record_dir",
         type=str,
-        default="psuedolabelgen_records/",
+        default="pseudolabelgen_records/",
         help="the patch to save the results of experiments.",
     )
     parser.add_argument(
@@ -105,10 +105,10 @@ def parse_agrs():
 def main():
     # parse arguments
     args = parse_agrs()
-    # wandb.init(
-    #     project="Training-Image-Extractor",
-    #     entity="capstone-dsi-radiology-report-generation",
-    # )
+    wandb.init(
+        project="Training-Image-Extractor",
+        entity="capstone-dsi-radiology-report-generation",
+    )
 
     # fix random seeds
     torch.manual_seed(args.seed)
@@ -130,7 +130,6 @@ def main():
     model = PseudoLabelGen(args)
     # build trainer and start to train
     trainer = Trainer(model, args, train_dataloader, val_dataloader, test_dataloader)
-    return model
     trainer.train()
 
 

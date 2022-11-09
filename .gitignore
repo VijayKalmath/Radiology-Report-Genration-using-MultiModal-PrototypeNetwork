@@ -11,7 +11,7 @@ data/*
 data
 results/*
 data.7z
-
+**/pseudolabelgen_results/*
 ### logs ###
 .idea
 logs/*

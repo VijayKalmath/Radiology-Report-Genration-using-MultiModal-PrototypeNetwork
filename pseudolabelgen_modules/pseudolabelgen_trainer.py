@@ -3,6 +3,14 @@ import os
 from abc import abstractmethod
 
 import torch
+from torch.nn import BCEWithLogitsLoss
+from torch.optim import Adam
+from torch.optim.lr_scheduler import ReduceLROnPlateau
+from torch import sigmoid
+# import torchmetrics as tm
+# from torchmetrics.functional.classification import multilabel_f1_score
+from sklearn.metrics import f1_score
+import numpy as np 
 from numpy import inf
 import wandb
 
@@ -21,7 +29,17 @@ class BaseTrainer(object):
         # setup GPU device if available, move model into configured device
         self.device, device_ids = self._prepare_device(args.n_gpu)
 
+        # Move Model to GPU
         self.model = model.to(self.device)
+
+        # Set up Criterion 
+        self.criterion = BCEWithLogitsLoss()
+
+        # set up optimizer
+        self.optimizer = Adam(model.parameters())
+
+        # Set up LR Scheduler 
+        self.lr_scheduler = ReduceLROnPlateau(self.optimizer, 'min')
 
         if len(device_ids) > 1:
             self.model = torch.nn.DataParallel(model, device_ids=device_ids)
@@ -158,16 +176,17 @@ class Trainer(BaseTrainer):
         self.test_dataloader = test_dataloader
 
     def _train_epoch(self, epoch):
-
         self.logger.info(
             "[{}/{}] Start to train in the training set.".format(epoch, self.epochs)
         )
+        
+        # Dictionary to store entries for logging 
         wandb_dictionary = {}
 
+        # Loss value 
         cross_entropy_loss = 0
 
         self.model.train()
-
         for batch_idx, (
             _,
             images,
@@ -179,20 +198,17 @@ class Trainer(BaseTrainer):
                 labels.to(self.device),
             )
 
-            output = self.model(images, mode="train")
+            output = self.model(images)
 
-            # TODO Define loss
-            loss = 0
+            loss = self.criterion(output, labels.type(torch.float))
             cross_entropy_loss += loss
 
-            # TODO define self.optimizer
             self.optimizer.zero_grad()
             loss.backward()
             self.optimizer.step()
 
             if batch_idx % self.args.log_period == 0:
 
-                # TODO Update Logger Line
                 self.logger.info(
                     "[{}/{}] Step: {}/{}, Cross Entropy Loss Ls: {:.5f}.".format(
                         epoch,
@@ -204,7 +220,7 @@ class Trainer(BaseTrainer):
                 )
 
         log = {
-            "cross_entropy_loss": cross_entropy_loss / len(self.train_dataloader),
+            "cross_entropy_loss": cross_entropy_loss.detach().cpu().numpy() / len(self.train_dataloader),
         }
 
         self.logger.info(
@@ -213,7 +229,9 @@ class Trainer(BaseTrainer):
             )
         )
         self.model.eval()
+
         with torch.no_grad():
+            val_gts, val_res = [], []
             for batch_idx, (
                 _,
                 images,
@@ -224,10 +242,15 @@ class Trainer(BaseTrainer):
                     labels.to(self.device),
                 )
 
-                output = self.model(images, labels=labels, mode="sample")
+                output = self.model(images)
+                predictions = sigmoid(output)
 
-            # TODO Update Log appropriately
-            log.update(**{"val_" + k: v for k, v in val_met.items()})
+                val_gts.extend(np.where(labels.detach().cpu().numpy() > 0.5, 1, 0))
+                val_res.extend(np.where(predictions.detach().cpu().numpy() > 0.5, 1, 0))
+
+            val_f1score = f1_score(val_gts,val_res,average='weighted')
+            val_met = {"val_f1score" : val_f1score}
+            log.update(**{k: v for k, v in val_met.items()})
 
         self.logger.info(
             "[{}/{}] Start to evaluate in the test set.".format(epoch, self.epochs)
@@ -236,7 +259,6 @@ class Trainer(BaseTrainer):
         self.model.eval()
         with torch.no_grad():
             test_gts, test_res = [], []
-            example_images = []
 
             for batch_idx, (
                 _,
@@ -248,11 +270,16 @@ class Trainer(BaseTrainer):
                     labels.to(self.device),
                 )
 
-                output = self.model(images, labels=labels, mode="sample")
+                output = self.model(images)
+                predictions = sigmoid(output)
 
-            # TODO Update Log appropriately
-            log.update(**{"test_" + k: v for k, v in test_met.items()})
+                test_gts.extend(np.where(labels.detach().cpu().numpy() > 0.5, 1, 0))
+                test_res.extend(np.where(predictions.detach().cpu().numpy() > 0.5, 1, 0))
 
-        # TODO Build LR Sched
-        self.lr_scheduler.step()
+            test_f1score = f1_score(test_gts, test_res,average='weighted')
+            test_met = {"test_f1score" : test_f1score}
+            log.update(**{k: v for k, v in test_met.items()})
+        wandb_dictionary.update(log)
+        wandb.log(wandb_dictionary)
+        self.lr_scheduler.step(val_f1score)
         return log
