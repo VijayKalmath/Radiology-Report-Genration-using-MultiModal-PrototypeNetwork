@@ -30,5 +30,4 @@ python main.py \
     --weight_img_con_loss 1 \
     --d_img_ebd 2048 \
     --d_txt_ebd 768 \
-    --num_protype 20 \
-    --visual_extractor efficientnet_v2_l
+    --num_protype 20
