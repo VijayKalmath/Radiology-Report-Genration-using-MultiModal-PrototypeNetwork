@@ -1,0 +1,147 @@
+2022-11-09 20:06:02,125 INFO    StreamThr :754 [internal.py:wandb_internal():91] W&B internal server running at pid: 754, started at: 2022-11-09 20:06:02.124305
+2022-11-09 20:06:02,127 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: status
+2022-11-09 20:06:02,129 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: status
+2022-11-09 20:06:02,133 DEBUG   SenderThread:754 [sender.py:send():303] send: header
+2022-11-09 20:06:02,133 INFO    WriterThread:754 [datastore.py:open_for_write():75] open: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/run-347u9xqx.wandb
+2022-11-09 20:06:02,140 DEBUG   SenderThread:754 [sender.py:send():303] send: run
+2022-11-09 20:06:02,383 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: check_version
+2022-11-09 20:06:02,384 INFO    SenderThread:754 [dir_watcher.py:__init__():216] watching files in: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files
+2022-11-09 20:06:02,384 INFO    SenderThread:754 [sender.py:_start_run_threads():931] run started: 347u9xqx with start time 1668024362.122397
+2022-11-09 20:06:02,384 DEBUG   SenderThread:754 [sender.py:send():303] send: summary
+2022-11-09 20:06:02,384 INFO    SenderThread:754 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-11-09 20:06:02,385 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: check_version
+2022-11-09 20:06:02,462 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: run_start
+2022-11-09 20:06:03,200 DEBUG   HandlerThread:754 [meta.py:__init__():34] meta init
+2022-11-09 20:06:03,201 DEBUG   HandlerThread:754 [meta.py:__init__():49] meta init done
+2022-11-09 20:06:03,201 DEBUG   HandlerThread:754 [meta.py:probe():215] probe
+2022-11-09 20:06:03,213 DEBUG   HandlerThread:754 [meta.py:_setup_git():205] setup git
+2022-11-09 20:06:03,226 DEBUG   HandlerThread:754 [meta.py:_setup_git():212] setup git done
+2022-11-09 20:06:03,226 DEBUG   HandlerThread:754 [meta.py:_save_pip():53] save pip
+2022-11-09 20:06:03,226 DEBUG   HandlerThread:754 [meta.py:_save_pip():67] save pip done
+2022-11-09 20:06:03,227 DEBUG   HandlerThread:754 [meta.py:_save_conda():74] save conda
+2022-11-09 20:06:03,386 INFO    Thread-13 :754 [dir_watcher.py:_on_file_created():275] file/dir created: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/conda-environment.yaml
+2022-11-09 20:06:03,386 INFO    Thread-13 :754 [dir_watcher.py:_on_file_created():275] file/dir created: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/wandb-summary.json
+2022-11-09 20:06:03,386 INFO    Thread-13 :754 [dir_watcher.py:_on_file_created():275] file/dir created: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/requirements.txt
+2022-11-09 20:06:06,679 DEBUG   HandlerThread:754 [meta.py:_save_conda():84] save conda done
+2022-11-09 20:06:06,680 DEBUG   HandlerThread:754 [meta.py:probe():253] probe done
+2022-11-09 20:06:06,684 DEBUG   SenderThread:754 [sender.py:send():303] send: files
+2022-11-09 20:06:06,684 INFO    SenderThread:754 [sender.py:_save_file():1171] saving file wandb-metadata.json with policy now
+2022-11-09 20:06:06,689 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: stop_status
+2022-11-09 20:06:06,689 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: stop_status
+2022-11-09 20:06:06,755 DEBUG   SenderThread:754 [sender.py:send():303] send: telemetry
+2022-11-09 20:06:06,757 DEBUG   SenderThread:754 [sender.py:send():303] send: exit
+2022-11-09 20:06:06,757 INFO    SenderThread:754 [sender.py:send_exit():442] handling exit code: 1
+2022-11-09 20:06:06,757 INFO    SenderThread:754 [sender.py:send_exit():444] handling runtime: 4
+2022-11-09 20:06:06,759 INFO    SenderThread:754 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-11-09 20:06:06,760 INFO    SenderThread:754 [sender.py:send_exit():450] send defer
+2022-11-09 20:06:06,760 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:06,760 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 0
+2022-11-09 20:06:06,760 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:06,760 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 0
+2022-11-09 20:06:06,760 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 1
+2022-11-09 20:06:06,761 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:06,761 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 1
+2022-11-09 20:06:06,864 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:06,864 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 1
+2022-11-09 20:06:06,864 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 2
+2022-11-09 20:06:06,865 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:06,865 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 2
+2022-11-09 20:06:06,865 DEBUG   SenderThread:754 [sender.py:send():303] send: stats
+2022-11-09 20:06:06,865 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:06,866 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 2
+2022-11-09 20:06:06,866 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 3
+2022-11-09 20:06:06,866 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:06,866 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 3
+2022-11-09 20:06:06,866 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:06,866 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 3
+2022-11-09 20:06:06,866 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 4
+2022-11-09 20:06:06,866 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:06,867 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 4
+2022-11-09 20:06:06,867 DEBUG   SenderThread:754 [sender.py:send():303] send: summary
+2022-11-09 20:06:06,867 INFO    SenderThread:754 [sender.py:_save_file():1171] saving file wandb-summary.json with policy end
+2022-11-09 20:06:06,867 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:06,867 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 4
+2022-11-09 20:06:06,867 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 5
+2022-11-09 20:06:06,868 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:06,868 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 5
+2022-11-09 20:06:06,868 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:06,868 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 5
+2022-11-09 20:06:07,118 INFO    Thread-17 :754 [upload_job.py:push():143] Uploaded file /tmp/tmptj74_22ewandb/z7l2liup-wandb-metadata.json
+2022-11-09 20:06:07,244 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 6
+2022-11-09 20:06:07,245 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:07,245 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 6
+2022-11-09 20:06:07,245 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:07,245 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 6
+2022-11-09 20:06:07,389 INFO    Thread-13 :754 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/conda-environment.yaml
+2022-11-09 20:06:07,389 INFO    Thread-13 :754 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/wandb-summary.json
+2022-11-09 20:06:07,389 INFO    Thread-13 :754 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/config.yaml
+2022-11-09 20:06:07,389 INFO    Thread-13 :754 [dir_watcher.py:_on_file_created():275] file/dir created: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/output.log
+2022-11-09 20:06:07,389 INFO    Thread-13 :754 [dir_watcher.py:_on_file_created():275] file/dir created: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/wandb-metadata.json
+2022-11-09 20:06:07,697 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: poll_exit
+2022-11-09 20:06:08,762 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 7
+2022-11-09 20:06:08,762 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: poll_exit
+2022-11-09 20:06:08,763 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:08,763 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 7
+2022-11-09 20:06:08,763 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:08,764 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 7
+2022-11-09 20:06:08,764 INFO    SenderThread:754 [dir_watcher.py:finish():362] shutting down directory watcher
+2022-11-09 20:06:09,390 INFO    Thread-13 :754 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/output.log
+2022-11-09 20:06:09,390 INFO    SenderThread:754 [dir_watcher.py:finish():392] scan: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files
+2022-11-09 20:06:09,390 INFO    SenderThread:754 [dir_watcher.py:finish():406] scan save: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/config.yaml config.yaml
+2022-11-09 20:06:09,391 INFO    SenderThread:754 [dir_watcher.py:finish():406] scan save: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/wandb-summary.json wandb-summary.json
+2022-11-09 20:06:09,391 INFO    SenderThread:754 [dir_watcher.py:finish():406] scan save: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/wandb-metadata.json wandb-metadata.json
+2022-11-09 20:06:09,391 INFO    SenderThread:754 [dir_watcher.py:finish():406] scan save: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/requirements.txt requirements.txt
+2022-11-09 20:06:09,391 INFO    SenderThread:754 [dir_watcher.py:finish():406] scan save: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/conda-environment.yaml conda-environment.yaml
+2022-11-09 20:06:09,400 INFO    SenderThread:754 [dir_watcher.py:finish():406] scan save: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/output.log output.log
+2022-11-09 20:06:09,403 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 8
+2022-11-09 20:06:09,407 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:09,407 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 8
+2022-11-09 20:06:09,407 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:09,407 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 8
+2022-11-09 20:06:09,408 INFO    SenderThread:754 [file_pusher.py:finish():168] shutting down file pusher
+2022-11-09 20:06:09,771 INFO    Thread-19 :754 [upload_job.py:push():143] Uploaded file /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/wandb-summary.json
+2022-11-09 20:06:09,777 INFO    Thread-18 :754 [upload_job.py:push():143] Uploaded file /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/config.yaml
+2022-11-09 20:06:09,788 INFO    Thread-20 :754 [upload_job.py:push():143] Uploaded file /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/requirements.txt
+2022-11-09 20:06:09,807 INFO    Thread-22 :754 [upload_job.py:push():143] Uploaded file /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/output.log
+2022-11-09 20:06:09,832 INFO    Thread-21 :754 [upload_job.py:push():143] Uploaded file /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/files/conda-environment.yaml
+2022-11-09 20:06:10,033 INFO    Thread-12 :754 [sender.py:transition_state():463] send defer: 9
+2022-11-09 20:06:10,034 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:10,034 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 9
+2022-11-09 20:06:10,034 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:10,034 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 9
+2022-11-09 20:06:10,034 INFO    SenderThread:754 [file_pusher.py:join():173] waiting for file pusher
+2022-11-09 20:06:10,034 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 10
+2022-11-09 20:06:10,035 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:10,035 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 10
+2022-11-09 20:06:10,035 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:10,035 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 10
+2022-11-09 20:06:10,112 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 11
+2022-11-09 20:06:10,112 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:10,112 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 11
+2022-11-09 20:06:10,113 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:10,113 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 11
+2022-11-09 20:06:10,113 INFO    SenderThread:754 [sender.py:transition_state():463] send defer: 12
+2022-11-09 20:06:10,113 DEBUG   SenderThread:754 [sender.py:send():303] send: final
+2022-11-09 20:06:10,114 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: defer
+2022-11-09 20:06:10,114 INFO    HandlerThread:754 [handler.py:handle_request_defer():161] handle defer: 12
+2022-11-09 20:06:10,114 DEBUG   SenderThread:754 [sender.py:send():303] send: footer
+2022-11-09 20:06:10,114 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: defer
+2022-11-09 20:06:10,114 INFO    SenderThread:754 [sender.py:send_request_defer():459] handle sender defer: 12
+2022-11-09 20:06:10,115 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: poll_exit
+2022-11-09 20:06:10,115 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: poll_exit
+2022-11-09 20:06:10,116 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: server_info
+2022-11-09 20:06:10,116 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: get_summary
+2022-11-09 20:06:10,116 DEBUG   SenderThread:754 [sender.py:send_request():317] send_request: server_info
+2022-11-09 20:06:10,117 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: sampled_history
+2022-11-09 20:06:10,235 INFO    MainThread:754 [wandb_run.py:_footer_history_summary_info():3377] rendering history
+2022-11-09 20:06:10,236 INFO    MainThread:754 [wandb_run.py:_footer_history_summary_info():3409] rendering summary
+2022-11-09 20:06:10,236 INFO    MainThread:754 [wandb_run.py:_footer_sync_info():3333] logging synced files
+2022-11-09 20:06:10,236 DEBUG   HandlerThread:754 [handler.py:handle_request():138] handle_request: shutdown
+2022-11-09 20:06:10,236 INFO    HandlerThread:754 [handler.py:finish():814] shutting down handler
+2022-11-09 20:06:11,114 INFO    WriterThread:754 [datastore.py:close():279] close: /home/ecbm4040/Mode_Collapse/wandb/run-20221109_200602-347u9xqx/run-347u9xqx.wandb
+2022-11-09 20:06:11,138 WARNING StreamThr :754 [internal.py:is_dead():386] Internal process exiting, parent pid 732 disappeared
+2022-11-09 20:06:11,138 ERROR   StreamThr :754 [internal.py:wandb_internal():147] Internal process shutdown.
+2022-11-09 20:06:11,235 INFO    SenderThread:754 [sender.py:finish():1331] shutting down sender
+2022-11-09 20:06:11,235 INFO    SenderThread:754 [file_pusher.py:finish():168] shutting down file pusher
+2022-11-09 20:06:11,235 INFO    SenderThread:754 [file_pusher.py:join():173] waiting for file pusher
+2022-11-09 20:06:11,239 INFO    MainThread:754 [internal.py:handle_exit():78] Internal process exited
