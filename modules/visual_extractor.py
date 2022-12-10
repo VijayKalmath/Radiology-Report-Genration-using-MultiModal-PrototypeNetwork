@@ -14,8 +14,8 @@ class VisualExtractor(nn.Module):
         self.model = nn.Sequential(*modules)
 
         # For Efficient_Net model, adding new conv2D layer\
-	# will have to comment this layer out for running mode collapse  if weights are from effecient net
-        self.model == nn.Sequential(self.model,nn.Conv2d(1280,2048,3,padding="same"))
+	# will have to comment this layer out for running mode collapse  if weights are from res net
+        #self.model == nn.Sequential(self.model,nn.Conv2d(1280,2048,3,padding="same"))
 
         self.avg_fnt = torch.nn.AvgPool2d(kernel_size=7, stride=1, padding=0)
 

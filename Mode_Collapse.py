@@ -192,32 +192,32 @@ def main():
             test_gts.extend(ground_truths)
             test_lab.extend(labels.cpu().numpy().tolist())
 
-    with open("val_res.json", 'w') as f:
+    with open("val_res_temp.json", 'w') as f:
         # indent=2 is not needed but makes the file human-readable
         # if the data is nested
         json.dump(val_res, f, indent=2)
 
-    with open("val_gts.json", 'w') as f:
+    with open("val_gts_temp.json", 'w') as f:
         # indent=2 is not needed but makes the file human-readable
         # if the data is nested
         json.dump(val_gts, f, indent=2)
 
-    with open("val_lab.json", 'w') as f:
+    with open("val_lab_temp.json", 'w') as f:
         # indent=2 is not needed but makes the file human-readable
         # if the data is nested
         json.dump(val_lab, f, indent=2)
 
-    with open("test_res.json", 'w') as f:
+    with open("test_res_temp.json", 'w') as f:
         # indent=2 is not needed but makes the file human-readable
         # if the data is nested
         json.dump(test_res, f, indent=2)
 
-    with open("test_gts.json", 'w') as f:
+    with open("test_gts_temp.json", 'w') as f:
         # indent=2 is not needed but makes the file human-readable
         # if the data is nested
         json.dump(test_gts, f, indent=2)
 
-    with open("test_lab.json", 'w') as f:
+    with open("test_lab_temp.json", 'w') as f:
         # indent=2 is not needed but makes the file human-readable
         # if the data is nested
         json.dump(test_lab, f, indent=2)
