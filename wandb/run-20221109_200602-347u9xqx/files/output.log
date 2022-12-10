@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "main.py", line 161, in <module>
-    main()
-  File "main.py", line 138, in main
-    tokenizer = Tokenizer(args)
-  File "/home/ecbm4040/Mode_Collapse/modules/tokenizers.py", line 15, in __init__
-    self.ann = json.loads(open(self.ann_path, 'r').read())
-FileNotFoundError: [Errno 2] No such file or directory: 'data/iu_xray/annotation.json'
