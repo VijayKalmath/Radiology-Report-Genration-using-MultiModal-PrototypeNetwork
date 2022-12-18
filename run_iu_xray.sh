@@ -31,4 +31,3 @@ python main.py \
     --d_img_ebd 2048 \
     --d_txt_ebd 768 \
     --num_protype 20
-
